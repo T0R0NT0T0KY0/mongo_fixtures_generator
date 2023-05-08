@@ -33,14 +33,14 @@
       ]
     },
     "data": {
-      "different": true,
       "type": "object",
       "object": [
         {
           "totalSumm": {
             "type": "number",
             "min": 10,
-            "max": 9999999
+            "max": 9999999,
+            "rounding": "round"
           },
           "totalDiscountSumm": {
             "type": "number",
@@ -76,7 +76,8 @@
           "price": {
             "type": "number",
             "min": 10,
-            "max": 100000
+            "max": 100000,
+            "rounding": "round"
           }
         }
       ]
