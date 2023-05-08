@@ -3,7 +3,7 @@
  * @created: 5/8/23
  * @Time: 12:58 AM
  */
-import { UUIDVersion } from "../generators/uuid.generator";
+import { RoundingStrategy, UUIDVersion } from "../generators";
 
 export type GenerateObjectsType = {
 	/**
@@ -17,11 +17,12 @@ export type GenerateObjectsType = {
 	object: Record<string, ObjectValueType>
 }
 
-export type ObjectValueType = ValueUUID | ValueEnum | ValueDate | ValueObject | ValueString;
+export type ObjectValueType = ValueUUID | ValueEnum | ValueDate | ValueObject | ValueString | ValueNumber;
 
 
-type ValueUUID = {
+export type ValueUUID = {
 	type: "uuid",
+
 	"version": UUIDVersion,
 
 	/**
@@ -30,30 +31,40 @@ type ValueUUID = {
 	"uniqueItems"?: number
 }
 
-type ValueEnum<T = unknown> = {
+export type ValueEnum<T = unknown> = {
 	type: "enum",
+
 	"enum": T[],
 }
 
-type ValueDate = {
+export type ValueDate = {
 	type: "date",
-	"min": number,
-	"max": number
+
+	"min": number | Date,
+
+	"max": number | Date
 }
 
-type ValueObject = {
+export type ValueObject = {
 	type: "object",
 
-	/**
-	 * Generate Different Objects
-	 */
-	"different"?: boolean,
-
-	"object": ObjectValueType | ObjectValueType[]
+	"object": Record<string, ObjectValueType> | Record<string, ObjectValueType>[]
 }
 
-type ValueString = {
+export type ValueString = {
 	type: "string",
+
 	minLength: number,
+
 	maxLength: number
+}
+
+export type ValueNumber = {
+	type: "number",
+
+	min: number,
+
+	max: number,
+
+	rounding?: RoundingStrategy
 }

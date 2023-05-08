@@ -1,3 +1,6 @@
+import { ValueNumber } from "../types/objectValueType";
+import { generateMany } from "../utils/generate-many.util";
+
 /**
  * @author: CHIKIRIAY
  * @created: 5/7/23
@@ -10,15 +13,11 @@ export enum RoundingStrategy {
 }
 
 
-export const generateNumber = (
-	minValue: number,
-	maxValue: number,
-	roundingStrategy?: RoundingStrategy,
-): number => {
-	const range = maxValue - minValue;
-	const randomNumber = Math.random() * range + minValue;
+export const generateNumber = ({ min, max, rounding }: Omit<ValueNumber, "type">): number => {
+	const range = max - min;
+	const randomNumber = Math.random() * range + min;
 
-	switch (roundingStrategy) {
+	switch (rounding) {
 		case RoundingStrategy.FLOOR:
 			return Math.floor(randomNumber);
 		case RoundingStrategy.CEIL:
@@ -28,4 +27,8 @@ export const generateNumber = (
 		default:
 			return randomNumber;
 	}
+};
+
+export const generateManyNumbers = (count: number, params: ValueNumber) => {
+	return generateMany(count, () => generateNumber(params));
 };
