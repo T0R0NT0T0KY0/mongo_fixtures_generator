@@ -1,6 +1,6 @@
 import { generateMany } from "../utils/generate-many.util";
 import { v1, v3, v4, v5 } from "uuid";
-import { ValueUUID } from "../types/objectValueType";
+import { ValueUUID } from "../types/generate-object.type";
 import { generateManyEnums } from "./enum.generator";
 
 /**

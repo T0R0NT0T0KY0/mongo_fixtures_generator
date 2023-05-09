@@ -14,10 +14,10 @@ export type GenerateObjectsType = {
 	/**
 	 * Entity description
 	 */
-	object: Record<string, ObjectValueType>
+	object: Record<string, GenerateObjectType>
 }
 
-export type ObjectValueType = ValueUUID | ValueEnum | ValueDate | ValueObject | ValueString | ValueNumber;
+export type GenerateObjectType = ValueUUID | ValueEnum | ValueDate | ValueObject | ValueString | ValueNumber;
 
 
 export type ValueUUID = {
@@ -48,7 +48,7 @@ export type ValueDate = {
 export type ValueObject = {
 	type: "object",
 
-	"object": Record<string, ObjectValueType> | Record<string, ObjectValueType>[]
+	"object": Record<string, GenerateObjectType> | Record<string, GenerateObjectType>[]
 }
 
 export type ValueString = {

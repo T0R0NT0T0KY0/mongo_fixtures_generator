@@ -4,10 +4,10 @@
  * @Time: 1:58 AM
  */
 import { generateManyValues } from "./generate-values";
-import { ObjectValueType } from "../types/objectValueType";
+import { GenerateObjectType } from "../types/generate-object.type";
 
 
-export const generateObjectsUtil = (count: number, object: Record<string, ObjectValueType>): Record<string, unknown>[] => {
+export const generateObjectsUtil = (count: number, object: Record<string, GenerateObjectType>): Record<string, unknown>[] => {
 	const objects: Record<string, unknown>[] = Array.from({ length: count }, () => ({}));
 
 	const entries = Object.entries(object);

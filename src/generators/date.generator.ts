@@ -5,7 +5,7 @@
  */
 import { generateNumber, RoundingStrategy } from "./number.generator";
 import { generateMany } from "../utils/generate-many.util";
-import { ValueDate } from "../types/objectValueType";
+import { ValueDate } from "../types/generate-object.type";
 
 export const generateDate = ({ min, max }: Omit<ValueDate, "type">): Date => {
 	return new Date(generateNumber({

@@ -3,7 +3,7 @@
  * @created: 5/8/23
  * @Time: 2:49 AM
  */
-import { ObjectValueType } from "../types/objectValueType";
+import { GenerateObjectType } from "../types/generate-object.type";
 import {
 	generateManyDates,
 	generateManyEnums,
@@ -14,7 +14,7 @@ import {
 } from "../generators";
 
 
-export const generateManyValues = (count: number, value: ObjectValueType) => {
+export const generateManyValues = (count: number, value: GenerateObjectType) => {
 	switch (value.type) {
 		case "uuid":
 			return generateManyUUID(count, value);

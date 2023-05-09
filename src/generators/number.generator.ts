@@ -1,4 +1,4 @@
-import { ValueNumber } from "../types/objectValueType";
+import { ValueNumber } from "../types/generate-object.type";
 import { generateMany } from "../utils/generate-many.util";
 
 /**

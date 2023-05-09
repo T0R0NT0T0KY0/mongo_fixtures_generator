@@ -3,7 +3,7 @@
  * @created: 5/8/23
  * @Time: 2:34 AM
  */
-import { ValueString } from "../types/objectValueType";
+import { ValueString } from "../types/generate-object.type";
 import { generateMany } from "../utils/generate-many.util";
 
 function generateString({ minLength, maxLength }: Omit<ValueString, "type">): string {

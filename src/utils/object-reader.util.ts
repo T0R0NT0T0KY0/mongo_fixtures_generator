@@ -6,7 +6,7 @@
 import { glob } from "glob";
 import { join } from "path";
 import { readFile } from "node:fs/promises";
-import { GenerateObjectsType } from "../types/objectValueType";
+import { GenerateObjectsType } from "../types/generate-object.type";
 import { logger } from "../common/logger";
 
 export const getFileNames = async (basePath: string, fileExtension: string): Promise<string[]> => {

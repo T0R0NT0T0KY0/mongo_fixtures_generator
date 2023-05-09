@@ -9,10 +9,10 @@ import { generateObjectsUtil } from "./utils/generate-objects.util";
 import { Envs } from "./config/envs";
 import { getClient, insertMany } from "./mongo";
 import { logger } from "./common/logger";
-import { ObjectValueType } from "./types/objectValueType";
+import { GenerateObjectType } from "./types/generate-object.type";
 import { createProgressBar } from "./common/progress-bar";
 
-export const generateManyFixturesByOnePattern = async (count: number, splitMaxCount: number, fileName: string, object: Record<string, ObjectValueType>): Promise<void> => {
+export const generateManyFixturesByOnePattern = async (count: number, splitMaxCount: number, fileName: string, object: Record<string, GenerateObjectType>): Promise<void> => {
 	const progressBar = createProgressBar();
 	const client = await getClient();
 	progressBar.start(count, 0);
@@ -50,11 +50,7 @@ export const run = async () => {
 
 		const { count, object } = await parseObject(`${basePath}${fileName}${fileExtension}`);
 
-		logger.info({
-			message: "Generate Objects.",
-			collection: fileName,
-			count,
-		});
+		logger.info(`Now ${count} Objects Are Generated For The ${fileName} Collection.`);
 
 		await generateManyFixturesByOnePattern(count, splitMaxCount, fileName, object);
 
