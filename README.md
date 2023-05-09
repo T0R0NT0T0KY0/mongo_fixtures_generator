@@ -11,11 +11,15 @@ With Mongo Fixtures Generator, you can create fixtures for testing your applicat
 
 ## Installation
 
-Clone the repository and install the dependencies:
+Clone the repository:
 
 ```bash
 git clone https://github.com/T0R0NT0T0KY0/mongo_fixtures_generator.git
 cd mongo_fixtures_generator
+```
+
+Install the dependencies:
+```bash
 pnpm install
 ```
 
@@ -23,8 +27,8 @@ pnpm install
 
 First, set up the required environment variables:
 
-- `MONGODB_URI`: the connection string to your MongoDB database
-- `DB_NAME`: the name of the database to insert the fixtures into
+- `MONGODB_CONNECTION_URL`: the connection string url to your MongoDB database
+- `MONGODB_DATABASE_NAME`: the name of the database to insert the fixtures into
 
 Second, write objects pattern:
 
