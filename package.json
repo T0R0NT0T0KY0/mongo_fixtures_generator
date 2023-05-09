@@ -8,20 +8,22 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "npx eslint \"{src,test}/**/*.ts\" --fix",
     "build": "tsc --project ./tsconfig.json",
-    "start:dev": "ts-node src/main.ts",
+    "start:dev": "ts-node src/main.ts | pino-pretty\n\n",
     "prepare": "pnpm run build && husky install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cli-progress": "^3.12.0",
     "dotenv": "^16.0.3",
     "glob": "^10.2.2",
     "mongodb": "^5.4.0",
-    "pino": "^8.14.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
+    "@types/cli-progress": "^3.11.0",
     "@types/node": "^20.1.0",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
@@ -33,7 +35,6 @@
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.3",
-    "pino-pretty": "^10.0.0",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "ts-node": "^10.9.1",
