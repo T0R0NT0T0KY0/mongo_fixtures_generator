@@ -9,13 +9,18 @@ import { readFile } from "node:fs/promises";
 import { GenerateObjectsType } from "../types/objectValueType";
 import { logger } from "../common/logger";
 
-export const getFileNames = async (): Promise<string[]> => {
+export const getFileNames = async (basePath: string, fileExtension: string): Promise<string[]> => {
 	try {
-		const files = await glob("src/objects/*.json", { nodir: true });
+		const fileNamesWithPath = await glob(`${basePath}*${fileExtension}`, { nodir: true });
 
-		logger.info(`Object Patterns: ${files.map(file => `"${file}"`).join(", ")}`);
+		const fileNames = fileNamesWithPath
+			.map((fileNameWithPath) =>
+				fileNameWithPath
+					.match(new RegExp(`${basePath}([\\w-]+)${fileExtension}`))[1]);
 
-		return files;
+		logger.info(`Object Patterns: ${fileNames.map(file => `"${file}"`).join(", ")}`);
+
+		return fileNames;
 	} catch (err) {
 		logger.error(err);
 		return [];
